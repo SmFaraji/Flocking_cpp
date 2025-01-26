@@ -11,7 +11,7 @@ int main()
     int win_width  = 680 * 2;
     int win_height = 480 * 2;
     Screen screen(win_width, win_height);
-    Flock birds(0.7, 0.02, 1, 0.35);
+    Flock birds(0.7, 0.02, 1, 0.6);
 
     auto previous_time = chrono::high_resolution_clock::now();
 

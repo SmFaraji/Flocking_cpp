@@ -2,7 +2,6 @@
 #define MYLIB_H
 
 
-#include <SDL2/SDL.h>
 #include <vector>
 #include <cmath>
 using namespace std;
