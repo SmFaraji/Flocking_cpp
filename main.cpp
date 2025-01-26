@@ -11,7 +11,7 @@ int main()
     int win_width  = 680 * 2;
     int win_height = 480 * 2;
     Screen screen(win_width, win_height);
-    Flock birds;
+    Flock birds(0.7, 0.02, 1, 0.35);
 
     auto previous_time = chrono::high_resolution_clock::now();
 
@@ -27,12 +27,12 @@ int main()
             birds.removeBirdsIfLeaveScreen(screen.get_w(), screen.get_h());
             // Perform your simulation update
             screen.handleEvents(birds);
-           // birds.moveAll(4);
+            birds.moveAll(4);
             birds.keepIn(screen.get_w(), screen.get_h());
 
             birds.ApplySepration(30);
-            //birds.ApplyCohesion(50);
-            //birds.ApplyAlignment(50);
+            birds.ApplyCohesion(50);
+            birds.ApplyAlignment(50);
             
             screen.show(birds);
 

@@ -7,11 +7,6 @@
 #include <cmath>
 using namespace std;
 
-const double SEPARATION_RATIO = 0.7 ;
-const double COHESION_RATIO   = 0.01;
-const double ALIGHN_RATIO   = 1;
-const double REDIR_RATIO   = 0.3; // keeping birds in window
-
 class Bird
 {
     public:
@@ -63,7 +58,8 @@ class Flock
 
     public:
 
-        Flock() : birds() {}
+        Flock(double separationRatio = 0.7, double cohesionRatio = 0.01, double alignRatio = 1.0, double redirRatio = 0.3)
+        : separationRatio(separationRatio), cohesionRatio(cohesionRatio), alignRatio(alignRatio), redirRatio(redirRatio), birds() {}
 
         
         void addBird(double x, double y);
@@ -92,6 +88,11 @@ class Flock
         double dt;
         vector<Bird> birds;
 
+        // Flocking behavior ratios
+        double separationRatio; // Separation force ratio
+        double cohesionRatio;   // Cohesion force ratio
+        double alignRatio;      // Alignment force ratio
+        double redirRatio;      // Redirection force ratio (for keeping birds in the window)
 };
 
 
@@ -130,7 +131,7 @@ void Flock::keepIn(int w, int h)
     double centerX = w / 2.0;
     double centerY = h / 2.0;
 
-    for (int i = 0; i < birds.size(); i++)
+    for (auto i = 0; i < birds.size(); i++)
     {
         double xx = birds[i].get_loc().x ;
         double yy = birds[i].get_loc().y ;
@@ -139,7 +140,7 @@ void Flock::keepIn(int w, int h)
         if (xx < 0.1*w || xx > 0.9*w || yy < 0.1*h || yy > 0.9*h )
         {
             double angleToCenter = atan2(-centerY + birds[i].get_loc().y, -birds[i].get_loc().x + centerX);
-            double chaneDirSmooth = birds[i].get_dir() + REDIR_RATIO*(angleToCenter-birds[i].get_dir());
+            double chaneDirSmooth = birds[i].get_dir() + redirRatio*(angleToCenter-birds[i].get_dir());
             birds[i].set_dir(chaneDirSmooth);
         }
 
@@ -179,8 +180,8 @@ void Flock::ApplySepration(double radm)
             }
 
         }
-        double xx = birds[i].get_loc().x + moveX*SEPARATION_RATIO;
-        double yy = birds[i].get_loc().y + moveY*SEPARATION_RATIO;
+        double xx = birds[i].get_loc().x + moveX*separationRatio;
+        double yy = birds[i].get_loc().y + moveY*separationRatio;
         birds[i].set_loc(xx, yy);
     }
 
@@ -223,8 +224,8 @@ void Flock::ApplyCohesion(double radm)
         centerX /= count;
         centerY /= count;
 
-        double xx = birds[i].get_loc().x + (centerX-birds[i].get_loc().x)*COHESION_RATIO;
-        double yy = birds[i].get_loc().y + (centerY-birds[i].get_loc().y)*COHESION_RATIO;
+        double xx = birds[i].get_loc().x + (centerX-birds[i].get_loc().x)*cohesionRatio;
+        double yy = birds[i].get_loc().y + (centerY-birds[i].get_loc().y)*cohesionRatio;
         birds[i].set_loc(xx, yy);
         }
     }
@@ -267,7 +268,7 @@ void Flock::ApplyAlignment(double radm)
         avgVx /= count;
         avgVy /= count;
 
-        double changeDirSmoothly = ALIGHN_RATIO*(atan2(avgVy, avgVx) - birds[i].get_dir()) + birds[i].get_dir();
+        double changeDirSmoothly = alignRatio*(atan2(avgVy, avgVx) - birds[i].get_dir()) + birds[i].get_dir();
 
         birds[i].set_dir(changeDirSmoothly);
         }
