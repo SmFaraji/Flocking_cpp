@@ -162,8 +162,8 @@ void Screen::craeteArrow(double px, double py, double _dir) {
     double cx = (cols - 1) / 2.0;
     double cy = (rows - 1) / 2.0;
 
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
+    for (auto i = 0; i < rows; i++) {
+        for (auto j = 0; j < cols; j++) {
             if (Arrow[i][j]) {
                 
                 double x = j - cx;

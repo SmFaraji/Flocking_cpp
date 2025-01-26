@@ -109,7 +109,7 @@ void Flock::moveAll(double ts)
 {
     dt = ts;
 
-    for (int i = 0; i < birds.size(); i++)
+    for (auto i = 0; i < birds.size(); i++)
     {
         double xx = birds[i].get_loc().x + dt * cos(birds[i].get_dir());
         double yy = birds[i].get_loc().y + dt * sin(-birds[i].get_dir()); // +y in=s down
@@ -155,10 +155,10 @@ void Flock::ApplySepration(double radm)
         abort();
     }
 
-    for (int i = 0; i < get_numOfBirds(); i++)
+    for (auto i = 0; i < get_numOfBirds(); i++)
     {
         double moveX = 0, moveY = 0;
-        for (int bird = 0; bird < get_numOfBirds(); bird++)
+        for (auto bird = 0; bird < get_numOfBirds(); bird++)
         {
             if (bird != i)
             {
@@ -195,13 +195,13 @@ void Flock::ApplyCohesion(double radm)
         abort();
     }
 
-    for (int i = 0; i < get_numOfBirds(); i++)
+    for (auto i = 0; i < get_numOfBirds(); i++)
     {
         double centerX = 0;
         double centerY = 0;
         int count = 0;
 
-        for (int bird = 0; bird < get_numOfBirds(); bird++)
+        for (auto bird = 0; bird < get_numOfBirds(); bird++)
         {
             if (bird != i)
             {
@@ -239,13 +239,13 @@ void Flock::ApplyAlignment(double radm)
     }
 
 
-    for (int i = 0; i < get_numOfBirds(); i++)
+    for (auto i = 0; i < get_numOfBirds(); i++)
     {
         double avgVx = 0;
         double avgVy = 0;
         int count = 0;
 
-        for (int bird = 0; bird < get_numOfBirds(); bird++)
+        for (auto bird = 0; bird < get_numOfBirds(); bird++)
         {
             if (bird != i)
             {
@@ -276,7 +276,7 @@ void Flock::ApplyAlignment(double radm)
 
 void Flock::removeBirdsIfLeaveScreen(int w, int h)
 {
-    for (int bird = 0; bird < get_numOfBirds(); bird++)
+    for (auto bird = 0; bird < get_numOfBirds(); bird++)
     {
         if (birds[bird].get_loc().x > w || birds[bird].get_loc().x < 0 || birds[bird].get_loc().y > h || birds[bird].get_loc().y < 0)
         {

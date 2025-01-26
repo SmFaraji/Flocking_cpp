@@ -27,12 +27,12 @@ int main()
             birds.removeBirdsIfLeaveScreen(screen.get_w(), screen.get_h());
             // Perform your simulation update
             screen.handleEvents(birds);
-            birds.moveAll(4);
+           // birds.moveAll(4);
             birds.keepIn(screen.get_w(), screen.get_h());
 
             birds.ApplySepration(30);
-            birds.ApplyCohesion(50);
-            birds.ApplyAlignment(50);
+            //birds.ApplyCohesion(50);
+            //birds.ApplyAlignment(50);
             
             screen.show(birds);
 
