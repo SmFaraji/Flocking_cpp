@@ -33,5 +33,35 @@ Below is a UML diagram illustrating the relationship between the classes:
 To clone the repository, use the following command in your terminal or command prompt:
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone git@github.com:SmFaraji/Flocking_cpp.git
+cd Flocking_cpp
+```
+### Step 2: Install SDL2
+Ensure SDL2 is installed on your system. You can install it using your package manager or download it from the SDL2 official website.
+
+- **Ubuntu/Debian:**:
+```bash
+sudo apt-get install libsdl2-dev
+```
+
+- **Windows**:
+Download SDL2 and extract it into your project directory (or set up your environment to find SDL2).
+
+- **MacOS**:
+```bash
+brew install sdl2
+```
+
+### Step 3: Build the Project Using CMake
+Create a build directory and navigate into it. Run CMake to generate the build files and build the project.
+```bash
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+
+### Step 4: Run the Executable
+```bash
+./flock
+```
