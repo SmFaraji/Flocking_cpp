@@ -36,8 +36,10 @@ int main()
             
             screen.show(birds);
 
-            cout << birds.get_numOfBirds() << endl;
-            // Optional: Log duration for debugging
+            cout << "\033[1;1H"; // ANSI escape code to position the cursor
+            cout << "Number of birds in flock: " << birds.get_numOfBirds() << endl;
+            cout << "\033[2J";  // Clear the rest of the terminal (optional)
+                // Optional: Log duration for debugging
             //cout << "Elapsed time for this step: " << elapsed.count() << " ms\n";
         }
 
