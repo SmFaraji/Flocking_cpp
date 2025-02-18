@@ -65,3 +65,17 @@ cmake --build .
 ```bash
 ./flock
 ```
+### Visual Demonstration
+You can add new birds to the simulation by clicking anywhere on the screen with a left mouse click.  
+Newly added birds will follow the flocking rules and behave like the rest of the flock.
+
+![Flocking Algorithm Demonstration](docs/videos/fig5_flock_test.gif)
+
+## Contact
+- 🔗 **LinkedIn**: [Mohammad Faraji](https://www.linkedin.com/in/smfaraji)  
+- 💻 **GitHub**: [SmFaraji](https://github.com/SmFaraji) 
+- ▶️ **YouTube Channel**: [@sm_faraji](https://www.youtube.com/@sm_faraji)  
+- 📢 **Telegram Channel**: [EngineeringLab](https://t.me/EngineeringLab) 
+- ✍️ **Medium**: [@sm_faraji](https://medium.com/@sm_faraji)   
+- 📺 **Aparat Channel**: [EngineeringLab](https://www.aparat.com/EngineeringLab)  
+
